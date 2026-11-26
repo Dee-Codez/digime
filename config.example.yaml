@@ -1,0 +1,40 @@
+# Copy to config.yaml and fill in your own values.
+# config.yaml is gitignored so local paths and credentials stay private.
+
+sources:
+  takeout:
+    enabled: true
+    # Directory containing unzipped Google Takeout files, e.g. ~/Downloads/Takeout
+    path: ""
+    # Accepted files inside the Takeout dir:
+    #   - YouTube and YouTube Music/history/watch-history.json
+    #   - My Activity/**/*.json  (search + activity history)
+    #   - Mail/*.mbox            (Gmail export)
+  browser_history:
+    enabled: true
+    # Chrome profile directory, e.g. ~/Library/Application Support/Google/Chrome
+    # On macOS: ~/Library/Application Support/Google/Chrome/Default
+    # On Linux: ~/.config/google-chrome/Default
+    chrome_profile: ""
+    youtube_only: false
+    limit_per_run: 10000
+
+neo4j:
+  uri: bolt://localhost:7687
+  user: neo4j
+  # Preferred: leave this referencing the env var and export NEO4J_PASSWORD.
+  # ${VAR} references are expanded by the CLI at load time.
+  password: ${NEO4J_PASSWORD}
+  database: neo4j
+  # Your own email, so the graph can mark your own account and exclude it from
+  # the "people you correspond with" analysis.
+  me_email: you@example.com
+
+llm:
+  # Optional: Ollama model used to generate answers from retrieved memories.
+  # Leave empty to run retrieval-only (no LLM, no API keys, fully offline).
+  ollama_model: ""
+  ollama_base_url: http://localhost:11434
+
+retrieval:
+  top_k: 8

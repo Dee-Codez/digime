@@ -1,0 +1,33 @@
+# --- Secrets / local config ---
+config.yaml
+.env
+.env.*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Local data (personal exports, never commit) ---
+data/
+*.db
+*.sqlite
+*.sqlite3
+*.mbox
+Takeout/
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

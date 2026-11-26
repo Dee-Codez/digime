@@ -1,0 +1,21 @@
+[project]
+name = "digime"
+version = "0.2.0"
+description = "Consolidate your Google Takeout + browser history into a single Neo4j knowledge graph with semantic search."
+requires-python = ">=3.10"
+dependencies = [
+    "pyyaml>=6.0",
+    "neo4j>=5.14",
+    "chromadb>=0.4.22",
+]
+
+[project.scripts]
+digime = "digime.cli:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["digime*"]
